@@ -1,4 +1,4 @@
-package selenium;
+package selenium.Waits;
 
 import java.time.Duration;
 import java.util.Arrays;
@@ -11,17 +11,19 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class ExplicitWait {
+public class ImplicitWait {
 
 	public static void main(String[] args) {
+		
 		System.setProperty("webdriver.chrome.driver",
 				"C:\\Users\\NBEEREDD\\Downloads\\chromedriver-win64 (1)\\chromedriver-win64\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("https://rahulshettyacademy.com/seleniumPractise/#/");
 		
-		//explicit wait - wait for a specific element
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+//		implicit wait - global wait 
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		
 		
 		//Adding elements to the cart
 		List<String> addElements = Arrays.asList("Brocolli", "Cucumber", "Brinjal");
@@ -33,11 +35,9 @@ public class ExplicitWait {
 		driver.findElement(By.cssSelector("img[alt='Cart']")).click();
 		driver.findElement(By.xpath("//button[text()='PROCEED TO CHECKOUT']")).click();
 		
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input.promoCode")));
 		driver.findElement(By.cssSelector("input.promoCode")).sendKeys("rahulshettyacademy");
 		driver.findElement(By.className("promoBtn")).click();
 		
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("promoInfo")));
 		System.out.println(driver.findElement(By.className("promoInfo")).getText());
 		
 		driver.quit();
@@ -57,5 +57,6 @@ public class ExplicitWait {
 			}
 		}
 	}
+	
 
 }
