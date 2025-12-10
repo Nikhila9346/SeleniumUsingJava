@@ -1,5 +1,7 @@
 package selenium;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -28,10 +30,17 @@ public class RelativeLocators {
 		System.out.println(tagName);
 		
 		//below() example
-		WebElement dob = driver.findElement(By.cssSelector("[name=\"bday\"]"));
+		WebElement dob = driver.findElement(By.cssSelector("[for=\"dateofBirth\"]"));
 		driver.findElement(RelativeLocator.with(By.tagName("input")).below(dob)).click();
 		
+		//toLeftOf()
+		WebElement checkBoxText = driver.findElement(By.cssSelector("[class=\"form-check-label\"]"));
+		driver.findElement(RelativeLocator.with(By.tagName("input")).toLeftOf(checkBoxText)).click();
 		
+		//toRightOf()
+		WebElement radioButton = driver.findElement(By.cssSelector("[value=\"option1\"]"));
+		String text = driver.findElement(RelativeLocator.with(By.tagName("label")).toRightOf(radioButton)).getText();
+		System.out.println(text);
 	}
 
 }
