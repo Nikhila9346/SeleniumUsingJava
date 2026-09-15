@@ -16,7 +16,7 @@ public class HandlingAlerts {
 		driver.manage().window().maximize();
 		driver.get("https://rahulshettyacademy.com/AutomationPractice/");
 
-		driver.findElement(By.id("name")).sendKeys("Nikhila");
+		driver.findElement(By.id("name")).sendKeys(".Automation");
 
 		driver.findElement(By.id("alertbtn")).click();
 		driver.switchTo().alert().accept();
