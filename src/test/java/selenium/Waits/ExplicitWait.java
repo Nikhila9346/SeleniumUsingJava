@@ -39,7 +39,7 @@ public class ExplicitWait {
 		
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("promoInfo")));
 		System.out.println(driver.findElement(By.className("promoInfo")).getText());
-		
+
 		driver.quit();
 	}
 	
