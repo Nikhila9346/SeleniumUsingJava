@@ -1,4 +1,4 @@
-package selenium;
+package selenium.WebTables;
 
 import java.time.Duration;
 
